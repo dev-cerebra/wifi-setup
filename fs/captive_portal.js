@@ -84,7 +84,7 @@
                 //dados obtidos do .json via comando Config.Get, possui todos dados de configs disponíveis
             document.getElementById("response").innerHTML = "Station:<br>" + "ssid: " + resp.wifi.sta.ssid 
             + "<br>" + "pass: " + resp.wifi.sta.pass + "<br>" + "<br>" + "Access Point:<br>" 
-            + "ssid: " + resp.wifi.ap.ssid + "<br>" + "pass: " + resp.wifi.ap.pass + "<br>" + "ip: "
+            + "ssid: " + resp.wifi.ap.ssid + "<br>" + "pass: " + resp.wifi.ap.pass + "<br>" + "Device: "
              + resp.wifi.ap.ip + "<br>" + "Device: " + resp.device.id; 
             } else {
                 responseVal = "Unable to get info from device!";
