@@ -22,6 +22,21 @@
       background-color: #F2F2F2; font-size: 13px;
 	  border-radius: 30px;
     }
+
+    input[type=checkbox] {
+       position: relative;
+       left: 10px;
+       top: 10px;
+       color: #C3C3C3;
+    }
+
+    label[type=text] {
+      position: relative;
+    left: 0;
+    top: 33px;
+       color: blue;
+       padding: 8px;
+    }
 	
 	  hr {
 	  border: 0.98px solid #cdcdcd; border-color: #F2F2F2;	

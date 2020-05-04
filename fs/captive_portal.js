@@ -48,7 +48,7 @@
         httpRequest.open(type, '/rpc/' + rpc );
         httpRequest.setRequestHeader("Content-Type", "application/json"); // must be after open
         httpRequest.send(JSON.stringify(data));
-    };
+  };
 	
 	//Faz a formatação correta do arquivo json para imprimir na pagina
     function highlight(json){
@@ -77,27 +77,26 @@
 
         rpcCall('GET', 'Config.Get', infoMessage ? infoMessage : false, false, function (resp) {
             var responseVal = 'Error'; // placeholder
-           if (resp && resp !== true ) {
+
+            if (resp && resp !== true ) {
                 var jsonResponse = resp.wifi.sta.ssid ? resp.wifi.sta.ssid : resp;
                 var stringifyJson = JSON.stringify(jsonResponse, undefined, 2);
                 responseVal = highlight(stringifyJson);
                 //dados obtidos do .json via comando Config.Get, possui todos dados de configs disponíveis
             document.getElementById("response").innerHTML = "Station:<br>" + "ssid: " + resp.wifi.sta.ssid 
             + "<br>" + "pass: " + resp.wifi.sta.pass + "<br>" + "<br>" + "Access Point:<br>" 
-            + "ssid: " + resp.wifi.ap.ssid + "<br>" + "pass: " + resp.wifi.ap.pass + "<br>" + "ip: "
-             + resp.wifi.ap.ip + "<br>" + "Device: " + resp.device.id; 
+            + "ssid: " + resp.wifi.ap.ssid + "<br>" + "pass: " + resp.wifi.ap.pass + "<br>" + "ip: " + resp.wifi.ap.ip; 
             } else {
                 responseVal = "Unable to get info from device!";
                 document.getElementById("response").innerHTML = responseVal ? responseVal : '';
             }
-
             //document.getElementById("response").innerHTML = responseVal ? responseVal : '';
             // Need to check if function since this is called by event handler
             if ( typeof callback === "function" ) {
                 callback( resp );
             }
         });
-	};
+	  };
 	
 	//Função que salva os dados de ssid e password no esp8266
 	function save_cb(){
@@ -119,11 +118,25 @@
 	   window.location.reload();
 	   rpcCall('POST', 'Sys.Reboot', false, function( resp ){});
       }
-    };
+  };
 	
 	//Função para reiniciar o esp
 	function reboot(){	  
 	  rpcCall('POST', 'Sys.Reboot', false, function( resp ){});
 	  alert("reboot success !");
       window.location.reload();
-    };
+  };
+
+function pass(){
+      var chk = document.getElementById("chkpass");
+      var x = document.getElementById("pass");
+
+      if (x.type === "password"){
+          console.log("check on!");
+          x.type = "text";
+      }       
+      else {
+          console.log("check off!"); 
+          x.type = "password";   
+      }
+  };
